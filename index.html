@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubCult - Welcome</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c1810, #1a1a1a, #301934);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(120, 80, 120, 0.3);
+            position: relative;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5a8c, #4a4a4a, #6b4c93);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .skull-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            display: block;
+            color: #8b5a8c;
+        }
+        
+        h1 {
+            color: #e0e0e0;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 32px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #b0b0b0;
+            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .step {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .features {
+            background: rgba(40, 40, 40, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 4px solid #8b5a8c;
+        }
+        
+        .feature-item {
+            margin: 15px 0;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 20px;
+            color: #8b5a8c;
+            width: 25px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #8b5a8c, #6b4c93);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 90, 140, 0.4);
+            background: linear-gradient(135deg, #9d6b9e, #7a5aa5);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #4a4a4a, #2a2a2a);
+            border: 1px solid #666;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #5a5a5a, #3a3a3a);
+            box-shadow: 0 10px 25px rgba(74, 74, 74, 0.4);
+        }
+        
+        .spotify-section {
+            background: rgba(29, 185, 84, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 1px solid rgba(29, 185, 84, 0.3);
+        }
+        
+        .spotify-logo {
+            color: #1db954;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .chat-preview {
+            background: rgba(20, 20, 20, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid #8b5a8c;
+        }
+        
+        .chat-line {
+            margin: 8px 0;
+            color: #c0c0c0;
+        }
+        
+        .user-msg {
+            color: #8b5a8c;
+        }
+        
+        .bot-msg {
+            color: #a0a0a0;
+        }
+        
+        .success-message {
+            background: rgba(29, 185, 84, 0.2);
+            color: #1db954;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            border: 1px solid rgba(29, 185, 84, 0.3);
+        }
+        
+        .buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Step 1: Welcome -->
+        <div id="step1" class="step active">
+            <div class="logo">
+                <span class="skull-icon">🎵</span>
+                <h1>Welcome to SubCult</h1>
+                <p class="subtitle">Your AI music companion for alternative culture and conversation</p>
+            </div>
+            
+            <div class="features">
+                <h3>What you can do:</h3>
+                <div class="feature-item">
+                    <span class="feature-icon">🎵</span>
+                    <span>Explore underground music scenes</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔥</span>
+                    <span>Discover alternative culture insights</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💬</span>
+                    <span>Engage in subcultural conversations</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎧</span>
+                    <span>Get real-time info about what you're playing</span>
+                </div>
+            </div>
+            
+            <div class="chat-preview">
+                <div class="chat-line user-msg">> what am i listening to?</div>
+                <div class="chat-line bot-msg">🎵 Currently playing: "Blue Monday" by New Order</div>
+                <div class="chat-line bot-msg">Classic synthpop that defined the underground dance scene...</div>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn" onclick="showStep2()">Get Started</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Spotify Choice -->
+        <div id="step2" class="step">
+            <div class="logo">
+                <span class="skull-icon">🎧</span>
+                <h1>Enhance Your Experience</h1>
+            </div>
+            
+            <div class="spotify-section">
+                <h3><span class="spotify-logo">♪</span>Connect Spotify (Optional)</h3>
+                <p>To provide real-time information about your music, we can connect to your Spotify account.</p>
+                
+                <div style="margin: 20px 0;">
+                    <strong>With Spotify:</strong>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>See what you're currently listening to</li>
+                        <li>Get detailed track information</li>
+                        <li>Receive music-based conversation</li>
+                    </ul>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <strong>Without Spotify:</strong>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>Still enjoy full gothic chat features</li>
+                        <li>Discuss music you tell me about</li>
+                        <li>Connect Spotify later if you change your mind</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn" onclick="connectSpotify()">
+                    <span class="spotify-logo">♪</span> Connect Spotify
+                </button>
+                <button class="btn btn-secondary" onclick="skipSpotify()">Skip for Now</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Success -->
+        <div id="step3" class="step">
+            <div class="logo">
+                <span class="skull-icon">✨</span>
+                <h1>Welcome to SubCult!</h1>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                <h3>🎵 Spotify Connected Successfully!</h3>
+                <p>Your account is now linked. I can see what you're listening to!</p>
+            </div>
+            
+            <div class="features">
+                <h3>Ready to chat about:</h3>
+                <div class="feature-item">
+                    <span class="feature-icon">🎼</span>
+                    <span>Your current alternative tracks</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌆</span>
+                    <span>Underground music scenes</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔊</span>
+                    <span>Subcultural movements and history</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💭</span>
+                    <span>Music discovery and recommendations</span>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn" onclick="startChatting()">Start Chatting</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showStep2() {
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+        
+        function connectSpotify() {
+            // Redirect to Spotify authorization
+            window.location.href = "https://accounts.spotify.com/authorize?client_id=df527e976dcc4e91b6e897aa4a0aa12c&response_type=code&redirect_uri=https://59b0-2a00-23c4-2850-1201-ccfd-841d-16b6-1da3.ngrok-free.app&scope=user-read-playback-state%20user-read-currently-playing%20user-read-email%20user-read-private&state=onboarding";
+        }
+        
+        function skipSpotify() {
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step3').classList.add('active');
+            
+            // Update success message for skip
+            document.getElementById('successMessage').innerHTML = `
+                <h3>🖤 Welcome to SubCult!</h3>
+                <p>You can always connect Spotify later by typing "connect spotify" in chat.</p>
+            `;
+        }
+        
+        function startChatting() {
+            // Redirect to your main chat interface
+            window.location.href = "https://your-chat-url.com";
+        }
+        
+        // Check if coming back from Spotify authorization
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('state') === 'onboarding' && urlParams.get('code')) {
+            // Show success step if returned from Spotify
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step3').classList.add('active');
+        }
+    </script>
+</body>
+</html>
