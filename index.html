@@ -259,6 +259,51 @@
     </div>
 
     <script>
+        // Handle Spotify callback when redirected back
+        function handleSpotifyCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const state = urlParams.get('state');
+            const error = urlParams.get('error');
+            
+            if (error) {
+                alert('Spotify connection failed: ' + error);
+                return;
+            }
+            
+            if (code && state === 'onboarding') {
+                // Send the code to your Make.com webhook
+                fetch('https://hook.eu2.make.com/d8l3gk8f35ve5s38r9dz9kmbrx7lh9ln', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        state: state,
+                        redirect_uri: 'https://shandypan.github.io/SubCult-onboarding/callback'
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Success! Update UI and redirect back to main page
+                        window.location.href = 'https://shandypan.github.io/SubCult-onboarding/?success=true&connected=spotify';
+                    } else {
+                        alert('Failed to connect Spotify. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Connection error. Please try again.');
+                });
+            }
+        }
+        
+        // Check if this is a callback from Spotify
+        if (window.location.pathname.includes('/callback') || window.location.search.includes('code=')) {
+            handleSpotifyCallback();
+        }
+        
         // Check URL parameters for success state
         const urlParams = new URLSearchParams(window.location.search);
         const isSuccess = urlParams.get('success');
@@ -305,11 +350,11 @@
         }
         
         function connectSpotify() {
-            // Updated Spotify authorization URL with your current ngrok URL
+            // Updated Spotify authorization URL to redirect back to onboarding page
             const authUrl = 'https://accounts.spotify.com/authorize?' + 
                 'client_id=df527e976dcc4e91b6e897aa4a0aa12c&' +
                 'response_type=code&' +
-                'redirect_uri=https://59b0-2a00-23c4-2850-1201-ccfd-841d-16b6-1da3.ngrok-free.app&' +
+                'redirect_uri=https://shandypan.github.io/SubCult-onboarding/callback&' +
                 'scope=user-read-playback-state%20user-read-currently-playing%20user-read-email%20user-read-private&' +
                 'state=onboarding';
             
@@ -329,7 +374,7 @@
         
         function startChatting() {
             // Update this with your actual ngrok URL for the React app
-            window.location.href = "https://59b0-2a00-23c4-2850-1201-ccfd-841d-16b6-1da3.ngrok-free.app";
+            window.location.href = "https://YOUR-REACT-APP-NGROK-URL.ngrok-free.app";
         }
         
         // Add some visual flair
