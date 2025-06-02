@@ -329,43 +329,19 @@
     </div>
 
     <script>
-        // Function to attempt opening Spotify app
-        function tryOpenSpotifyApp() {
-            console.log('Attempting to open Spotify app...');
-            
-            // Try different methods to open Spotify
-            const attempts = [
-                'spotify://',  // Main Spotify protocol
-                'spotify://open',  // Alternative
-                'ms-windows-store://pdp/?ProductId=9ncbcszsjrsb'  // Windows Store fallback
-            ];
-            
-            attempts.forEach((url, index) => {
-                setTimeout(() => {
-                    try {
-                        // Create a hidden link and click it
-                        const link = document.createElement('a');
-                        link.href = url;
-                        link.style.display = 'none';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        console.log(`Tried opening: ${url}`);
-                    } catch (error) {
-                        console.log(`Failed to open ${url}:`, error);
-                    }
-                }, index * 500);  // Stagger attempts
-            });
-            
-            // Also try window.open as fallback
-            setTimeout(() => {
-                try {
-                    window.open('https://open.spotify.com', '_blank');
-                    console.log('Opened Spotify Web Player as fallback');
-                } catch (error) {
-                    console.log('Failed to open web player:', error);
-                }
-            }, 2000);
+        // Function to show Spotify preparation instructions
+        function showSpotifyInstructions() {
+            const notice = document.getElementById('autoOpenNotice');
+            notice.innerHTML = `
+                🎵 <strong>Before connecting:</strong> Please open your Spotify app now for the best experience!<br>
+                <small>• Desktop: Launch Spotify from your applications</small><br>
+                <small>• Mobile: Open the Spotify app</small><br>
+                <small>• No app? We'll use the web player</small>
+            `;
+            notice.style.display = 'block';
+            notice.style.background = 'rgba(29, 185, 84, 0.15)';
+            notice.style.borderColor = 'rgba(29, 185, 84, 0.4)';
+            notice.style.color = '#1DB954';
         }
 
         // Handle Spotify callback when redirected back
@@ -420,6 +396,7 @@
         
         // Update UI based on connection status
         function updateUI(connected = false) {
+            console.log('updateUI called with connected:', connected);
             const statusIndicator = document.getElementById('spotifyStatus');
             const successMessage = document.getElementById('successMessage');
             const quickStart = document.getElementById('quickStart');
@@ -430,6 +407,7 @@
             const buttonGroup = document.getElementById('buttonGroup');
             
             if (connected) {
+                console.log('Showing connected state...');
                 // Show success state
                 statusIndicator.innerHTML = '<span>🟢</span> Connected to Spotify';
                 statusIndicator.className = 'status-indicator status-connected';
@@ -451,6 +429,7 @@
                 }, 500);
                 
             } else {
+                console.log('Showing disconnected state...');
                 // Show default state
                 statusIndicator.innerHTML = '<span>⚫</span> Not Connected';
                 statusIndicator.className = 'status-indicator status-disconnected';
@@ -466,28 +445,28 @@
         
         // Check if user is returning from successful Spotify auth
         if (isSuccess === 'true' && isConnected === 'spotify') {
+            console.log('Success parameters detected, updating UI...');
             updateUI(true);
             
-            // Clean up URL after processing
+            // Clean up URL after processing but keep it in session storage
+            sessionStorage.setItem('spotify_just_connected', 'true');
             const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.replaceState(null, document.title, cleanUrl);
             
-        } else if (localStorage.getItem('spotify_connected') === 'true') {
+        } else if (localStorage.getItem('spotify_connected') === 'true' || sessionStorage.getItem('spotify_just_connected') === 'true') {
+            console.log('Previous connection detected, updating UI...');
             updateUI(true);
         }
         
-        // Enhanced connect function with auto-open
+        // Enhanced connect function with instructions
         function connectSpotifyWithAutoOpen() {
-            // Show the auto-open notice
-            document.getElementById('autoOpenNotice').style.display = 'block';
+            // Show preparation instructions
+            showSpotifyInstructions();
             
-            // Try to open Spotify app first
-            tryOpenSpotifyApp();
-            
-            // Short delay, then proceed with normal auth flow
-            setTimeout(() => {
-                connectSpotify();
-            }, 1000);
+            // Update button to show next step
+            const connectBtn = document.getElementById('connectBtn');
+            connectBtn.innerHTML = '🚀 Continue to Spotify';
+            connectBtn.onclick = connectSpotify;
         }
         
         function connectSpotify() {
