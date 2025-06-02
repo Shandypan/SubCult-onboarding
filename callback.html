@@ -171,10 +171,10 @@
                 console.log('Make.com response:', response.status);
                 if (response.ok) {
                     showSuccess();
-                    // Redirect back to main page after success
+                    // Redirect back to main page after success with explicit parameters
                     setTimeout(() => {
-                        window.location.href = 'https://shandypan.github.io/SubCult-onboarding/?success=true&connected=spotify';
-                    }, 2000);
+                        window.location.href = 'https://shandypan.github.io/SubCult-onboarding/?success=true&connected=spotify&timestamp=' + Date.now();
+                    }, 1500);
                 } else {
                     throw new Error(`Server responded with status: ${response.status}`);
                 }
