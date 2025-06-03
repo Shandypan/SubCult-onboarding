@@ -9,289 +9,293 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             color: #ffffff;
             min-height: 100vh;
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
-
+        
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
+            padding: 40px 20px;
             text-align: center;
-            padding: 60px 0;
-            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, transparent 50%);
         }
-
+        
         .logo {
-            font-size: 3.5em;
+            font-size: 3rem;
             font-weight: bold;
+            color: #ff6b6b;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, #8a2be2, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: pulse 2s ease-in-out infinite alternate;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
-        @keyframes pulse {
-            from { opacity: 0.8; }
-            to { opacity: 1; }
-        }
-
-        .tagline {
-            font-size: 1.3em;
-            opacity: 0.9;
+        
+        .subtitle {
+            font-size: 1.2rem;
             margin-bottom: 40px;
+            opacity: 0.9;
         }
-
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ff6b6b;
+        }
+        
         .cta-section {
-            text-align: center;
             margin: 60px 0;
         }
-
-        .main-cta {
-            display: inline-block;
-            background: linear-gradient(45deg, #8a2be2, #ff6b6b);
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3); }
-            to { box-shadow: 0 12px 35px rgba(138, 43, 226, 0.5); }
-        }
-
-        .main-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.5);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            border-color: rgba(138, 43, 226, 0.5);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-        }
-
-        .feature h3 {
-            color: #8a2be2;
-            margin-bottom: 15px;
-        }
-
+        
         .spotify-section {
             background: rgba(30, 215, 96, 0.1);
-            border: 2px solid rgba(30, 215, 96, 0.3);
+            border: 2px solid #1ed760;
             border-radius: 20px;
             padding: 40px;
-            margin: 60px 0;
-            text-align: center;
+            margin: 40px 0;
         }
-
-        .spotify-btn {
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-spotify {
             background: #1ed760;
             color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 10px;
+            box-shadow: 0 4px 15px rgba(30, 215, 96, 0.3);
         }
-
-        .spotify-btn:hover {
+        
+        .btn-spotify:hover {
             background: #1db954;
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
-
-        .skip-btn {
+        
+        .btn-secondary {
             background: transparent;
-            color: #8a2be2;
-            border: 2px solid #8a2be2;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 10px;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
-
-        .skip-btn:hover {
-            background: #8a2be2;
-            color: white;
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
-
-        .success-section {
+        
+        .success-message {
             display: none;
-            background: rgba(76, 175, 80, 0.1);
-            border: 2px solid rgba(76, 175, 80, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .success-section.show {
-            display: block;
+            background: rgba(30, 215, 96, 0.2);
+            border: 2px solid #1ed760;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
             animation: fadeIn 0.5s ease-in;
         }
-
+        
+        .success-message.show {
+            display: block;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 80px;
+        
+        .loading {
+            display: none;
+            margin: 20px 0;
         }
-
+        
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ff6b6b;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .bottom-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        
         @media (max-width: 768px) {
-            .logo { font-size: 2.5em; }
-            .tagline { font-size: 1.1em; }
-            .main-cta { padding: 15px 30px; font-size: 1.1em; }
-            .features { grid-template-columns: 1fr; }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bottom-cta {
+                position: relative;
+                transform: none;
+                left: auto;
+                bottom: auto;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1 class="logo">🎭 SubCult</h1>
-            <p class="tagline">Your AI companion for discovering dark, gothic music in an immersive 3D environment</p>
-        </header>
-
-        <section class="cta-section">
-            <a href="#" class="main-cta" onclick="startChatting()">🚀 Enter the Goth Room</a>
-        </section>
-
-        <section class="features">
-            <div class="feature">
+        <div class="logo">SubCult</div>
+        <div class="subtitle">Your AI Music Companion in a Gothic Realm</div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
                 <div class="feature-icon">🎵</div>
-                <h3>AI Music Discovery</h3>
-                <p>Chat with our AI assistant to discover new gothic, dark ambient, and underground music tailored to your taste.</p>
+                <div class="feature-title">AI Music Assistant</div>
+                <p>Discover new music with our intelligent AI that understands your taste and mood.</p>
             </div>
-            <div class="feature">
-                <div class="feature-icon">🏰</div>
-                <h3>3D Gothic Environment</h3>
-                <p>Immerse yourself in a beautifully rendered 3D gothic room while you explore music and chat.</p>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <div class="feature-title">Gothic Atmosphere</div>
+                <p>Immerse yourself in a beautifully crafted 3D gothic environment.</p>
             </div>
-            <div class="feature">
+            
+            <div class="feature-card">
                 <div class="feature-icon">🎧</div>
-                <h3>Spotify Integration</h3>
-                <p>Connect your Spotify account for personalized recommendations and seamless music playback.</p>
+                <div class="feature-title">Spotify Integration</div>
+                <p>Connect your Spotify account for personalized recommendations and seamless playback.</p>
             </div>
-        </section>
-
-        <section class="spotify-section" id="spotify-section">
-            <h2>🎵 Enhance with Spotify</h2>
-            <p>Connect your Spotify account for personalized music recommendations and playlist creation</p>
-            <button class="spotify-btn" onclick="connectSpotify()">Connect Spotify</button>
-            <button class="skip-btn" onclick="skipToChat()">Skip for Now</button>
-        </section>
-
-        <section class="success-section" id="success-section">
-            <h2>🎉 Spotify Connected Successfully!</h2>
-            <p>Your music preferences will now enhance your SubCult experience</p>
-            <a href="#" class="main-cta" onclick="startChatting()">🚀 Enter the Goth Room</a>
-        </section>
+        </div>
+        
+        <div class="spotify-section" id="spotifySection">
+            <h2>🎵 Enhance Your Experience</h2>
+            <p>Connect your Spotify account to unlock personalized music recommendations and seamless integration with your playlists.</p>
+            
+            <div class="loading" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Connecting to Spotify...</p>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                <h3>🎉 Spotify Connected Successfully!</h3>
+                <p>Your music preferences have been synced. Ready to enter the gothic realm?</p>
+                
+                <div class="success-section">
+                    <h4>🚀 You're All Set!</h4>
+                    <p>Your Spotify account is now connected. Dive into the SubCult experience with personalized music recommendations.</p>
+                    <button class="btn btn-primary" onclick="startChatting()">🏰 Enter the Goth Room</button>
+                </div>
+            </div>
+            
+            <div id="connectSection">
+                <button class="btn btn-spotify" onclick="connectSpotify()">Connect with Spotify</button>
+                <br>
+                <button class="btn btn-secondary" onclick="skipToChat()">Skip for Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bottom-cta">
+        <button class="btn btn-primary" onclick="skipToChat()">🏰 Enter Goth Room</button>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2025 SubCult - Discover the darkness in music</p>
-    </footer>
-
     <script>
-        function connectSpotify() {
-            // Instructions for manual Spotify opening
-            alert('Tip: For the best experience, open your Spotify app first, then click "Continue to Spotify" in the next dialog.');
-            
-            if (confirm('Click OK to continue to Spotify authorization')) {
-                const clientId = 'df527e976dcc4e91b6e897aa4a0aa12c';
-                const redirectUri = encodeURIComponent('https://shandypan.github.io/SubCult-onboarding/callback');
-                const scope = encodeURIComponent('user-read-playback-state user-read-currently-playing user-read-email user-read-private');
-                const state = 'onboarding';
-                
-                const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
-                window.location.href = authUrl;
-            }
+        // Check URL parameters for success/error states
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+        const connected = urlParams.get('connected');
+        const error = urlParams.get('error');
+        
+        // Show success state if redirected from successful auth
+        if (success === 'true' && connected === 'spotify') {
+            updateUI(true);
         }
-
-        function skipToChat() {
-            window.location.href = "https://0e05-2a00-23c4-2850-1201-495a-f0af-2d94-32d7.ngrok-free.app";
-        }
-
-        function startChatting() {
-            window.location.href = "https://0e05-2a00-23c4-2850-1201-495a-f0af-2d94-32d7.ngrok-free.app?spotify=connected";
-        }
-
+        
         function updateUI(connected) {
             if (connected) {
-                document.getElementById('spotify-section').style.display = 'none';
-                document.getElementById('success-section').classList.add('show');
+                document.getElementById('connectSection').style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Store connection state
+                localStorage.setItem('spotify_connected', 'true');
+                
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
                 
                 // Auto-scroll to success section
-                document.getElementById('success-section').scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'center' 
-                });
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        // Check URL parameters on load
-        window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const success = urlParams.get('success');
-            const connected = urlParams.get('connected');
+        
+        function connectSpotify() {
+            // Show loading state
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('connectSection').style.display = 'none';
             
-            if (success === 'true' && connected === 'spotify') {
-                updateUI(true);
-                
-                // Clean URL after processing
-                const url = new URL(window.location);
-                url.searchParams.delete('success');
-                url.searchParams.delete('connected');
-                window.history.replaceState({}, document.title, url.toString());
-            }
-        });
+            // Spotify OAuth URL - connects to your SubCult app
+            const clientId = 'df527e976dcc4e91b6e897aa4a0aa12c';
+            const redirectUri = encodeURIComponent('https://shandypan.github.io/SubCult-onboarding/callback');
+            const scope = encodeURIComponent('user-read-private user-read-email user-read-playback-state user-read-currently-playing');
+            const state = 'onboarding';
+            
+            const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
+            
+            window.location.href = authUrl;
+        }
+        
+        function skipToChat() {
+            // Redirect to main app
+            window.location.href = "https://0e05-2a00-23c4-2850-1201-495a-f0af-2d94-32d7.ngrok-free.app";
+        }
+        
+        function startChatting() {
+            // Redirect to main app with connected status
+            window.location.href = "https://0e05-2a00-23c4-2850-1201-495a-f0af-2d94-32d7.ngrok-free.app?spotify=connected";
+        }
     </script>
 </body>
 </html>
